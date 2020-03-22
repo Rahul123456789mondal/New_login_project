@@ -1,15 +1,16 @@
 package com.example.logindemo
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-
 
 /**
  * A simple [Fragment] subclass.
@@ -53,6 +54,21 @@ class Login : Fragment(), View.OnClickListener {
                 fragmentTransition.commit()
 
             }
+            R.id.login ->{
+                checkValidation()
+            }
+        }
+    }
+
+    private fun checkValidation() {
+        val getUsername : String = userName.text.toString()
+        val getPassword : String = passWord.text.toString()
+
+        if (getUsername.equals("Admin") || getPassword.equals("admin")){
+            val intent = Intent(context, homeActivity::class.java)
+            startActivity(intent)
+        }else{
+            Toast.makeText(activity, "Do not Login", Toast.LENGTH_SHORT).show()
         }
     }
 }
