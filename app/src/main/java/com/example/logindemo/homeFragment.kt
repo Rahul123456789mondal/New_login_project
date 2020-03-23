@@ -42,7 +42,6 @@ class homeFragment : Fragment() {
                         " [line ${Thread.currentThread().stackTrace[2].lineNumber}] :: Called"
                 )
             }
-
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
 
             }
