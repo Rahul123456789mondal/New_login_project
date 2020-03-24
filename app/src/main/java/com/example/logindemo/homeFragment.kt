@@ -43,13 +43,27 @@ class homeFragment : Fragment() {
                 )
             }
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-
+                Log.d(TAG, "MainActivity{} : onItemSelected() >>" +
+                        " [line ${Thread.currentThread().stackTrace[2].lineNumber}] :: Selected Item ${spinnerDataSet[position]}"
+                )
+                val selected : String = spinnerDataSet[position]
+                val newDataList : List<Data> = getZoneList(selected, dataSet)
+                Log.d(TAG, "MainActivity{} : onItemSelected() >>" +
+                        " [line ${Thread.currentThread().stackTrace[2].lineNumber}] :: New Data Set Size : ${newDataList.size}"
+                )
             }
 
         }
+    }
 
-
-
+    private fun getZoneList(zone: String, dataSet: List<Data>) : List<Data> {
+        var dataList: List<Data> = mutableListOf()
+        for (data in dataSet) {
+            if (data.zone == zone) {
+                dataList = dataList.plus(data)
+            }
+        }
+        return dataList
     }
 
     private fun getSpinnerList(dataSet: List<Data>) : Array<String> {
