@@ -52,7 +52,6 @@ class Login : Fragment(), View.OnClickListener {
                 val fragmentTransition: FragmentTransaction = fragmentManager.beginTransaction()
                 fragmentTransition.replace(R.id.frameContainer, signUp)
                 fragmentTransition.commit()
-
             }
             R.id.login ->{
                 checkValidation()
